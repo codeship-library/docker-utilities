@@ -21,7 +21,7 @@ docker run -it --rm \
 	--env-file=credentials.env \
 	-v "$(pwd):/opt/data/" \
 	-v "/var/run/docker/sock:/var/run/docker.sock" \
-	/opt/data/dockercfg
+	codeship/dockercfg-generator /opt/data/dockercfg
 ```
 
 Running the above command will create a `dockercfg` file in your current directory, that you can use via the `encrypted_dockercfg_path` directive on Codeship Pro.
