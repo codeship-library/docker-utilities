@@ -11,6 +11,9 @@ dockercfg_test:
     path: ./dockercfg-generator
     dockerfile_path: Dockerfile.test
 dockercfg_test_generator:
-  image: codeship/dockercfg-generator
+  build:
+    image: codeshipdeploy/codeship-testing
+    path: ./dockercfg-generator
+    dockerfile_path: Dockerfile.test
   add_docker: true
   encrypted_env_file: docker.env.encrypted
