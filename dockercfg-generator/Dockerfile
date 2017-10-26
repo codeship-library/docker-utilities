@@ -1,4 +1,4 @@
-FROM docker:17.09
+FROM docker:17.10
 LABEL maintainer='Codeship Inc., <maintainers@codeship.com>'
 
 COPY docker_creds.sh /bin
