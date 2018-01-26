@@ -59,7 +59,7 @@ deployment:
   image: codeship/ssh-helper
   volumes:
     - .ssh:/root/.ssh
-		- .:/app
+    - .:/app
 ```
 
 ```yaml
@@ -71,8 +71,8 @@ deployment:
   service: deployment
   command: scp -r /app/ user@myserver.com:app/
 - name: Restart Server
-	service: deployment
-	command: ssh user@myserver.com restart_server
+  service: deployment
+  command: ssh user@myserver.com restart_server
 ```
 
 # Contributing
