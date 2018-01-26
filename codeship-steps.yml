@@ -1,11 +1,22 @@
-- name: Build the dockercfg Generator
-  service: dockercfg_generator
-  command: true
-- name: Test dockercfg Generator
-  service: dockercfg_test
-  type: push
-  image_name: codeshipdeploy/codeship-testing
-  dockercfg_service: dockercfg_test_generator
+- type: parallel
+  steps:
+    - name: dockercfg Generator
+      type: serial
+      steps:
+        - name: Build the dockercfg Generator
+          service: dockercfg_generator
+          command: true
+        - name: Test dockercfg Generator
+          service: dockercfg_test
+          type: push
+          image_name: codeshipdeploy/codeship-testing
+          dockercfg_service: dockercfg_test_generator
+    - name: SSH Helper
+      type: serial
+      steps:
+        - name: Build the SSH Helper
+          service: ssh_helper
+          command: write
 - name: Deploy (to Docker Hub)
   tag: master
   type: serial
@@ -14,4 +25,9 @@
       service: dockercfg_generator
       type: push
       image_name: codeship/dockercfg-generator
+      encrypted_dockercfg_path: dockercfg.encrypted
+    - name: Push SSH Helper
+      service: ssh_helper
+      type: push
+      image_name: codeship/ssh-helper
       encrypted_dockercfg_path: dockercfg.encrypted
