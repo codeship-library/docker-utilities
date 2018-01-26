@@ -1,0 +1,3 @@
+.ssh
+codeship_deploy_key*
+codeship.env

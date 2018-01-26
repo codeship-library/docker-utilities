@@ -17,3 +17,11 @@ dockercfg_test_generator:
     dockerfile_path: Dockerfile
   add_docker: true
   encrypted_env_file: docker.env.encrypted
+ssh_helper:
+  build:
+    image: codeship/ssh-helper
+    path: ./ssh-helper
+    dockerfile_path: Dockerfile
+  encrypted_env_file: ssh-helper.env.encrypted
+  volumes:
+    - .:/keys/
