@@ -18,6 +18,6 @@ case "${ACTION}" in
 		printf "${PRIVATE_SSH_KEY}" >> "${BASE_FOLDER}/.ssh/id_rsa"
 		;;
 	*)
-		echo "Usage: $0 {generate|encrypt|prepare}"
+		echo "Usage: $0 {generate|prepare|write}"
 		exit 1
 esac
