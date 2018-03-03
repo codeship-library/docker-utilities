@@ -2,16 +2,6 @@
 
 This is a helper image to make it easier to use SSH keys on Codeship Pro. It allows you to easily generate a new SSH keypair, create the (unencrypted) environment file and to write the key to a file again during your Codeship Pro build.
 
-## Build Locally
-
-To build the image locally, clone the repository and run the following command from within your local COPY
-
-```shell
-docker build -t codeship/ssh-helper .
-```
-
-At a later point we will make the image available via Docker Hub as well.
-
 ## Generate a New SSH KEY
 
 The following command will create a new SSH key and write the files to your current directory. The filenames will be `codeship_deploy_key` for the private key and `codeship_deploy_key.pub` for the public one.
@@ -22,7 +12,7 @@ docker run -it --rm -v $(pwd):/keys/ codeship/ssh-helper generate "<YOUR_EMAIL>"
 
 Your email address is added to the key via the comment to make it easier to know who created the key.
 
-Also, the tool is fairly opionated and won't let you change any parameters of the key, or the file the key is written to yet. All other commands rely on those files as well, so it's not advisable to rename the files yourself.
+Also, the tool is fairly opinionated and won't let you change any parameters of the key, or the file the key is written to yet. All other commands rely on those files as well, so it's not advisable to rename the files yourself.
 
 As for the generated keys, those are 4096 bit RSA keys without a passphrase. So make sure the private key is never committed to the repository or shared with somebody who you don't want to have access to your resources.
 
