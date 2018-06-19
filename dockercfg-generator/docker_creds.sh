@@ -8,7 +8,7 @@ set -e
 
 # Logging into the Docker registry
 echo "Logging into registry at ${DOCKER_REGISTRY}"
-docker login --username "${DOCKER_USERNAME}" --password "${DOCKER_PASSWORD}" "${DOCKER_REGISTRY}"
+echo ${DOCKER_PASSWORD} | docker login --username "$DOCKER_USERNAME" --password-stdin "${DOCKER_REGISTRY}"
 
 # writing docker creds to desired path
 echo "Writing Docker creds to $1"
