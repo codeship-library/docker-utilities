@@ -25,3 +25,10 @@ ssh_helper:
   encrypted_env_file: ssh-helper.env.encrypted
   volumes:
     - .:/keys/
+env-var-helper:
+  build:
+    image: codeship/env-var-helper
+    path: ./env-var-helper
+    dockerfile_path: Dockerfile
+  volumes:
+    - ./env-var-helper/test:/files
