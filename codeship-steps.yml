@@ -17,6 +17,18 @@
         - name: Build the SSH Helper
           service: ssh_helper
           command: write
+    - name: env-var-helper
+      service: env-var-helper
+      type: serial
+      steps:
+        - name: add entry
+          command: cp lorem_ipsum.txt:/container/path/lorem_ipsum.txt test-env-file
+        - name: cat contents of file
+          command: cat /container/path/lorem_ipsum.txt test-env-file
+        - name: list entries of env var file
+          command: ls test-env-file
+        - name: remove entry from env var file
+          command: rm /container/path/lorem_ipsum.txt test-env-file
 - name: Deploy (to Docker Hub)
   tag: master
   type: serial
@@ -30,4 +42,9 @@
       service: ssh_helper
       type: push
       image_name: codeship/ssh-helper
+      encrypted_dockercfg_path: dockercfg.encrypted
+    - name: Push env-var-helper
+      service: env-var-helper
+      type: push
+      image_name: codeship/env-var-helper
       encrypted_dockercfg_path: dockercfg.encrypted
