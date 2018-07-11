@@ -10,7 +10,7 @@ else # file exists, with ENV_VAR_HELPER present
   raise "Expected Array object" unless env_var_helper_data.is_a? Array
 
   puts
-  puts "to view the complete contents of a file, run `docker run --rm -it -v $(pwd):/files dkcodeship/env-var-helper cat CONTAINER_DESTINATION_FILE ENV_FILE"
+  puts "to view the complete contents of a file, run `docker run --rm -it -v $(pwd):/files codeship/env-var-helper cat CONTAINER_DESTINATION_FILE ENV_FILE"
   puts
   puts "CONTAINER_DESTINATION - CONTENT_SUMMARY"
   puts "-----------------------------------"
