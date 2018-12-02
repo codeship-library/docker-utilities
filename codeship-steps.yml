@@ -4,18 +4,18 @@
       type: serial
       steps:
         - name: Build the dockercfg Generator
-          service: dockercfg_generator
+          service: dockercfg-generator
           command: true
         - name: Test dockercfg Generator
-          service: dockercfg_test
+          service: dockercfg-test
           type: push
           image_name: codeshipdeploy/codeship-testing
-          dockercfg_service: dockercfg_test_generator
+          dockercfg_service: dockercfg-test-generator
     - name: SSH Helper
       type: serial
       steps:
         - name: Build the SSH Helper
-          service: ssh_helper
+          service: ssh-helper
           command: write
     - name: env-var-helper
       service: env-var-helper
@@ -34,12 +34,12 @@
   type: serial
   steps:
     - name: Push dockercfg Generator
-      service: dockercfg_generator
+      service: dockercfg-generator
       type: push
       image_name: codeship/dockercfg-generator
       encrypted_dockercfg_path: dockercfg.encrypted
     - name: Push SSH Helper
-      service: ssh_helper
+      service: ssh-helper
       type: push
       image_name: codeship/ssh-helper
       encrypted_dockercfg_path: dockercfg.encrypted

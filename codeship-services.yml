@@ -1,23 +1,23 @@
-dockercfg_generator:
+dockercfg-generator:
   build:
     image: codeship/dockercfg-generator
     path: ./dockercfg-generator
     dockerfile_path: Dockerfile
   add_docker: true
   encrypted_env_file: docker.env.encrypted
-dockercfg_test:
+dockercfg-test:
   build:
     image: codeshipdeploy/codeship-testing
     path: ./dockercfg-generator
     dockerfile_path: Dockerfile.test
-dockercfg_test_generator:
+dockercfg-test-generator:
   build:
     image: codeship/dockercfg-generator
     path: ./dockercfg-generator
     dockerfile_path: Dockerfile
   add_docker: true
   encrypted_env_file: docker.env.encrypted
-ssh_helper:
+ssh-helper:
   build:
     image: codeship/ssh-helper
     path: ./ssh-helper
