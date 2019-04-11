@@ -26,6 +26,12 @@ docker run -it --rm -v $(pwd):/keys/ codeship/ssh-helper prepare
 
 The resulting file will be called `codeship.env`, and the value will be appended if that file already exists.
 
+You can also override few variable to have custom keys location and names.
+
+```shell
+docker run -it --rm -v $(pwd):/keys/ --env BASE_FOLDER="/keys" --env KEY_FILE="/keys/my_codeship_deploy_key" --env ENV_FILE="/keys/my_codeship.env" codeship/ssh-helper prepare
+```
+
 ## Write the Environment Variable Back to a File
 
 During your Codeship Pro builds, you need to take the environment variable and write it back to a file, to pass to the `ssh` (or similar) commands.
