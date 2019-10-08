@@ -15,7 +15,7 @@ case "${ACTION}" in
 		;;
 	write)
 		mkdir -p "${BASE_FOLDER}/.ssh/"
-		printf "${PRIVATE_SSH_KEY}" > "${BASE_FOLDER}/.ssh/id_rsa"
+		printf "${PRIVATE_SSH_KEY}\n" > "${BASE_FOLDER}/.ssh/id_rsa"
 		;;
 	*)
 		echo "Usage: $0 {generate|prepare|write}"
