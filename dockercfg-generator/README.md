@@ -18,7 +18,7 @@ Use the published image to create the `dockercfg` file.
 docker run -it --rm \
 	--env-file=credentials.env \
 	-v "$(pwd):/opt/data/" \
-	-v "/var/run/docker/sock:/var/run/docker.sock" \
+	-v "/var/run/docker.sock:/var/run/docker.sock" \
 	codeship/dockercfg-generator /opt/data/dockercfg
 ```
 
