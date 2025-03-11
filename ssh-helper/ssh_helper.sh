@@ -1,7 +1,7 @@
 #!/bin/sh
-BASE_FOLDER="/keys"
-KEY_FILE="${BASE_FOLDER}/codeship_deploy_key"
-ENV_FILE="${BASE_FOLDER}/codeship.env"
+[ -z "${BASE_FOLDER}" ] && BASE_FOLDER="/keys"
+[ -z "${KEY_FILE}" ] && KEY_FILE="${BASE_FOLDER}/codeship_deploy_key"
+[ -z "${ENV_FILE}" ] && ENV_FILE="${BASE_FOLDER}/codeship.env"
 
 ACTION=$1 && shift
 
@@ -15,7 +15,7 @@ case "${ACTION}" in
 		;;
 	write)
 		mkdir -p "${BASE_FOLDER}/.ssh/"
-		printf "${PRIVATE_SSH_KEY}\n" >> "${BASE_FOLDER}/.ssh/id_rsa"
+		printf "${PRIVATE_SSH_KEY}\n" > "${BASE_FOLDER}/.ssh/id_rsa"
 		;;
 	*)
 		echo "Usage: $0 {generate|prepare|write}"
